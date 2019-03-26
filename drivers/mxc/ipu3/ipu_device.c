@@ -3309,10 +3309,6 @@ static int ipu_task_thread(void *argv)
 				/* let the parent thread do the first sp_task */
 				/* FIXME: ensure the correct sequence for split
 					4size: 5/6->9/a*/
-				if (!sp_tsk0)
-					dev_err(tsk->dev,
-					"ERR: no-0x%x,can not get split_tsk0\n",
-					tsk->task_no);
 				wake_up_interruptible(&thread_waitq);
 				get_res_do_task(sp_tsk0);
 				dev_dbg(sp_tsk0->dev,
