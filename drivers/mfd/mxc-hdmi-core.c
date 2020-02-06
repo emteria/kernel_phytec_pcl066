@@ -22,7 +22,6 @@
 
 #include <linux/platform_device.h>
 #include <linux/regulator/machine.h>
-#include <asm/mach-types.h>
 
 #include <video/mxc_hdmi.h>
 #include <linux/ipu-v3.h>
