@@ -19,6 +19,7 @@
 #include "phytec-imx8mq-phyboard-polaris.dtsi"
 #include "phytec-imx8mq-phyboard-polaris-sdcard.dtsi"
 #include "phytec-imx8mq-phyboard-polaris-peb-av-009.dtsi"
+#include "phytec-imx8mq-phyboard-polaris-android.dtsi"
 #include "phytec-polaris-peb-eval-01.dtsi"
 
 / {
