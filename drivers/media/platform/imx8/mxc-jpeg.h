@@ -21,18 +21,21 @@
 #define MXC_JPEG_NAME			"mxc-jpeg"
 #define MXC_IN_FORMAT			0
 #define MXC_OUT_FORMAT			1
-#define MXC_JPEG_INIT			0
-#define MXC_JPEG_RUNNING		1
 #define MXC_JPEG_FMT_TYPE_ENC		0
 #define MXC_JPEG_FMT_TYPE_RAW		1
-#define MXC_JPEG_MIN_HEIGHT		64
+#define MXC_JPEG_DEFAULT_WIDTH		1280
+#define MXC_JPEG_DEFAULT_HEIGHT		720
+#define MXC_JPEG_DEFAULT_PIXFMT		V4L2_PIX_FMT_RGB24
 #define MXC_JPEG_MIN_WIDTH		64
-#define MXC_JPEG_MAX_HEIGHT		0x2000
+#define MXC_JPEG_MIN_HEIGHT		64
 #define MXC_JPEG_MAX_WIDTH		0x2000
+#define MXC_JPEG_MAX_HEIGHT		0x2000
 #define MXC_JPEG_MAX_CFG_STREAM		0x1000
 #define MXC_JPEG_H_ALIGN		3
 #define MXC_JPEG_W_ALIGN		3
-#define MXC_JPEG_DEFAULT_SIZEIMAGE	10000
+#define MXC_JPEG_DEFAULT_SIZEIMAGE	(6 * MXC_JPEG_DEFAULT_WIDTH * \
+					 MXC_JPEG_DEFAULT_HEIGHT)
+#define MXC_JPEG_MAX_SIZEIMAGE		0xFFFFFC00
 #define MXC_JPEG_ENC_CONF		1
 #define MXC_JPEG_ENC_DONE		0
 #define SOF0				0xC0
@@ -85,7 +88,6 @@ struct mxc_jpeg_q_data {
 	int w_adjusted;
 	int h;
 	int h_adjusted;
-	u32			stride;
 };
 struct mxc_jpeg_ctx {
 	struct mxc_jpeg_dev		*mxc_jpeg;
@@ -100,6 +102,10 @@ struct mxc_jpeg_ctx {
 	unsigned int			stopping;
 	unsigned int			dht_needed;
 	unsigned int			slot;
+	enum v4l2_colorspace colorspace;
+	enum v4l2_ycbcr_encoding ycbcr_enc;
+	enum v4l2_quantization quantization;
+	enum v4l2_xfer_func xfer_func;
 };
 
 struct mxc_jpeg_slot_data {

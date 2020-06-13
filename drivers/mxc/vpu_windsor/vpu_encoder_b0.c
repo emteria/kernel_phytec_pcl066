@@ -2669,8 +2669,10 @@ static int handle_event_start_done(struct vpu_ctx *ctx)
 	if (!ctx)
 		return -EINVAL;
 
+	down(&ctx->q_data[V4L2_SRC].drv_q_lock);
 	set_bit(VPU_ENC_STATUS_START_DONE, &ctx->status);
 	set_queue_rw_flag(&ctx->q_data[V4L2_SRC], VPU_ENC_FLAG_WRITEABLE);
+	up(&ctx->q_data[V4L2_SRC].drv_q_lock);
 	submit_input_and_encode(ctx);
 
 	enable_fps_sts(get_vpu_ctx_attr(ctx));
@@ -2864,8 +2866,10 @@ static void vpu_enc_event_handler(struct vpu_ctx *ctx,
 		handle_event_stop_done(ctx);
 		break;
 	case VID_API_ENC_EVENT_FRAME_INPUT_DONE:
+		down(&ctx->q_data[V4L2_SRC].drv_q_lock);
 		set_queue_rw_flag(&ctx->q_data[V4L2_SRC],
 				VPU_ENC_FLAG_WRITEABLE);
+		up(&ctx->q_data[V4L2_SRC].drv_q_lock);
 		response_stop_stream(ctx);
 		submit_input_and_encode(ctx);
 		break;
@@ -5934,7 +5938,7 @@ static const struct of_device_id vpu_enc_of_match[] = {
 	  .data = (void *)&supported_plat_types[IMX8QXP]
 	},
 	{}
-}
+};
 MODULE_DEVICE_TABLE(of, vpu_enc_of_match);
 
 static struct platform_driver vpu_enc_driver = {
