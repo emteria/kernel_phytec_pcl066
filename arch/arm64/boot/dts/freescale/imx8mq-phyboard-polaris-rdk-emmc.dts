@@ -8,6 +8,7 @@
 
 #include "imx8mq-phycore-som.dtsi"
 #include "imx8mq-phyboard-polaris.dtsi"
+#include "imx8mq-phyboard-polaris-android.dtsi"
 #include "imx8mq-phyboard-polaris-sdcard.dtsi"
 #include "imx8mq-phyboard-polaris-peb-av-009.dtsi"
 #include "imx8mq-polaris-peb-eval-01.dtsi"
