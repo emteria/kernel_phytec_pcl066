@@ -17,6 +17,9 @@
 
 #include "phytec-imx8mq-phycore-som.dtsi"
 #include "phytec-imx8mq-phyboard-polaris.dtsi"
+#include "phytec-imx8mq-phyboard-polaris-peb-av-009.dtsi"
+#include "phytec-imx8mq-phyboard-polaris-android.dtsi"
+#include "phytec-polaris-peb-eval-01.dtsi"
 #include "phytec-imx8mq-phyboard-polaris-sterling.dtsi"
 
 / {
